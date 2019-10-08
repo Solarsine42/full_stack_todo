@@ -1,14 +1,26 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./App.css";
 
 class App extends Component {
-  store = {
+  state = {
     todos: [],
     message: ""
   };
 
+  componentDidMount() {
+    axios.get("/api/message").then(res => {
+      this.setState({ message: res.data });
+    });
+  }
+
   render() {
-    return <div className="App">FS Todo App</div>;
+    return (
+      <div className="App">
+        <h1>FS Todo App</h1>
+        <p>Message: {this.state.message}</p>
+      </div>
+    );
   }
 }
 
