@@ -9,7 +9,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios.get("/api/message").then(res => {
+    axios.get("http://localhost:8000/api/message").then(res => {
       this.setState({ message: res.data });
     });
   }
